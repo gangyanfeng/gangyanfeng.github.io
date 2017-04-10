@@ -1,0 +1,29 @@
+<!doctype html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8" />
+	<title>toFixed</title>
+</head>
+<body>
+	<input type="text" class="num" placeholder="请输入要保留的小数" />
+	<input type="text" class="lengt" placeholder="请输入要保留的位数"  />
+	<br />
+	<input type="button" class="btn" value="toFixed" />
+</body>
+<script src="http://code.jquery.com/jquery-1.8.0.min.js" type="text/javascript" charset="utf-8"></script>
+<script type="text/javascript">
+	//num: 要保留的数
+	//length: 保留的小数位数
+	function newToFixed (num,length) {
+		var type = num > 0 ? 1 : 0;
+		with (Math) {
+			num = (round(abs((num * pow(10,length)).toFixed(1))) / pow(10,length)).toFixed(length);
+		}
+		if (type == 0) num = (num *= -1).toFixed(length);//保留最后的0
+		return num;
+	}
+	$(".btn").click(function () {
+		$(".num").val(newToFixed($(".num").val(),$(".lengt").val()))
+	})
+</script>
+</html>
