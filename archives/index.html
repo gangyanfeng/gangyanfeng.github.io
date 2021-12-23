@@ -1,582 +1,411 @@
-<!doctype html>
+<!DOCTYPE HEML PUBLIC>
 
+<html>
 
-
-  
-
-
-<html class="theme-next pisces use-motion" lang="zh-Hans">
 <head>
-  <meta charset="UTF-8"/>
-<meta http-equiv="X-UA-Compatible" content="IE=edge" />
-<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"/>
+
+<meta charset="utf-8">
+
+<style>
+
+html, body
+
+{
+
+width: 100%;
+
+height: 100%;
+
+margin: 0;
+
+padding: 0;
+
+border: 0;
+
+}
+
+div
+
+{
+
+margin: 0;
+
+padding: 0;
+
+border: 0;
+
+}
 
 
 
-<meta http-equiv="Cache-Control" content="no-transform" />
-<meta http-equiv="Cache-Control" content="no-siteapp" />
+.nav
+
+{
+
+position: absolute;
+
+top: 0;
+
+left: 0;
+
+width: 100%;
+
+height: 27px;
+
+background-color: white;
+
+color: black;
+
+text-align: center;
+
+line-height: 25px;
+
+}
 
 
 
+a
+
+{
+
+color: black;
+
+text-decoration: none;
+
+border-bottom: 1px dashed black;
+
+}
 
 
 
+a:hover
+
+{
+
+border-bottom: 1px solid red;
+
+}
 
 
 
+.previous
+
+{
+
+float: left;
+
+margin-left: 10px;
+
+}
 
 
 
+.next
+
+{
+
+float: right;
+
+margin-right: 10px;
+
+}
 
 
 
-  
-  
-  <link href="/lib/fancybox/source/jquery.fancybox.css?v=2.1.5" rel="stylesheet" type="text/css" />
+.green
+
+{
+
+color: green;
+
+}
 
 
 
+.red
 
-  
-  
-  
-  
+{
 
-  
-    
-    
-  
+color: red;
 
-  
-
-  
-
-  
-
-  
-
-  
-    
-    
-    <link href="//fonts.googleapis.com/css?family=Lato:300,300italic,400,400italic,700,700italic&subset=latin,latin-ext" rel="stylesheet" type="text/css">
-  
+}
 
 
 
+textarea
+
+{
+
+width: 100%;
+
+height: 100%;
+
+border: 0;
+
+padding: 0;
+
+margin: 0;
+
+padding-bottom: 20px;
+
+}
 
 
 
-<link href="/lib/font-awesome/css/font-awesome.min.css?v=4.6.2" rel="stylesheet" type="text/css" />
+.block-outer
 
-<link href="/css/main.css?v=5.1.0" rel="stylesheet" type="text/css" />
+{
 
+float: left;
 
-  <meta name="keywords" content="Hexo, NexT" />
+width: 22%;
 
+height: 100%;
 
+padding: 5px;
 
+border-left: 1px solid black;
 
+margin: 30px 3px 3px 3px;
 
-
-
-
-  <link rel="shortcut icon" type="image/x-icon" href="/favicon.ico?v=5.1.0" />
-
-
-
-
-
-
-<meta property="og:type" content="website">
-<meta property="og:title" content="Hexo">
-<meta property="og:url" content="http://yoursite.com/archives/index.html">
-<meta property="og:site_name" content="Hexo">
-<meta name="twitter:card" content="summary">
-<meta name="twitter:title" content="Hexo">
+}
 
 
 
-<script type="text/javascript" id="hexo.configurations">
-  var NexT = window.NexT || {};
-  var CONFIG = {
-    root: '/',
-    scheme: 'Pisces',
-    sidebar: {"position":"left","display":"post","offset":12,"offset_float":0,"b2t":false,"scrollpercent":false},
-    fancybox: true,
-    motion: true,
-    duoshuo: {
-      userId: '0',
-      author: '博主'
-    },
-    algolia: {
-      applicationID: '',
-      apiKey: '',
-      indexName: '',
-      hits: {"per_page":10},
-      labels: {"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}
-    }
-  };
-</script>
+.block-inner
+
+{
+
+height: 68%;
+
+}
 
 
 
-  <link rel="canonical" href="http://yoursite.com/archives/"/>
+.one
 
+{
 
+border: 0;
 
+}
 
+</style>
 
-  <title> 归档 | Hexo </title>
 </head>
 
-<body itemscope itemtype="http://schema.org/WebPage" lang="zh-Hans">
+<body marginwidth="0" marginheight="0">
 
-  
+<canvas id="c" height="356" width="446">
 
+<script>
 
+var collapsed = true;
 
+function toggle()
 
+{
 
+var fs = top.document.getElementsByTagName('frameset')[0];
 
+var f = fs.getElementsByTagName('frame');
 
+if (collapsed)
 
+{
 
+fs.rows = '250px,*';
 
+fs.noResize = false;
 
+f[0].noResize = false;
 
+f[1].noResize = false;
 
+}
 
-  
-  
-    
-  
 
-  <div class="container sidebar-position-left  page-archive  ">
-    <div class="headband"></div>
 
-    <header id="header" class="header" itemscope itemtype="http://schema.org/WPHeader">
-      <div class="header-inner"><div class="site-brand-wrapper">
-  <div class="site-meta ">
-    
-
-    <div class="custom-logo-site-title">
-      <a href="/"  class="brand" rel="start">
-        <span class="logo-line-before"><i></i></span>
-        <span class="site-title">Hexo</span>
-        <span class="logo-line-after"><i></i></span>
-      </a>
-    </div>
-      
-        <p class="site-subtitle"></p>
-      
-  </div>
-
-  <div class="site-nav-toggle">
-    <button>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-      <span class="btn-bar"></span>
-    </button>
-  </div>
-</div>
-
-<nav class="site-nav">
-  
-
-  
-    <ul id="menu" class="menu">
-      
-        
-        <li class="menu-item menu-item-home">
-          <a href="/" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-home"></i> <br />
-            
-            首页
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-archives">
-          <a href="/archives" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-archive"></i> <br />
-            
-            归档
-          </a>
-        </li>
-      
-        
-        <li class="menu-item menu-item-tags">
-          <a href="/tags" rel="section">
-            
-              <i class="menu-item-icon fa fa-fw fa-tags"></i> <br />
-            
-            标签
-          </a>
-        </li>
-      
-
-      
-    </ul>
-  
-
-  
-</nav>
-
-
+else
 
- </div>
-    </header>
+{
 
-    <main id="main" class="main">
-      <div class="main-inner">
-        <div class="content-wrap">
-          <div id="content" class="content">
-            
+fs.rows = '30px,*';
 
-  <section id="posts" class="posts-collapse">
-    <span class="archive-move-on"></span>
+fs.noResize = true;
 
-    <span class="archive-page-counter">
-      
-      
-      
-        
-      
-      嗯..! 目前共计 2 篇日志。 继续努力。
-    </span>
+f[0].noResize = true;
 
-    
+f[1].noResize = true;
 
-      
-      
-      
+}
 
-      
-        
-        <div class="collection-title">
-          <h2 class="archive-year motion-element" id="archive-year-2017">2017</h2>
-        </div>
-      
-      
+collapsed = !collapsed;
 
-      
+}
 
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/06/我的第一篇博客/" itemprop="url">
-              
-                <span itemprop="name">我的第一篇博客</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-06T13:41:44+08:00"
-              content="2017-04-06" >
-          04-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-      
-      
-      
-
-      
-      
-
-      
-
-  <article class="post post-type-normal" itemscope itemtype="http://schema.org/Article">
-    <header class="post-header">
-
-      <h1 class="post-title">
-        
-            <a class="post-title-link" href="/2017/04/06/hello-world/" itemprop="url">
-              
-                <span itemprop="name">Hello World</span>
-              
-            </a>
-        
-      </h1>
-
-      <div class="post-meta">
-        <time class="post-time" itemprop="dateCreated"
-              datetime="2017-04-06T11:16:17+08:00"
-              content="2017-04-06" >
-          04-06
-        </time>
-      </div>
-
-    </header>
-  </article>
-
-
-
-    
-
-  </section>
-
-  
-
-
-
-          </div>
-          
-
-
-          
-
-        </div>
-        
-          
-  
-  <div class="sidebar-toggle">
-    <div class="sidebar-toggle-line-wrap">
-      <span class="sidebar-toggle-line sidebar-toggle-line-first"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-middle"></span>
-      <span class="sidebar-toggle-line sidebar-toggle-line-last"></span>
-    </div>
-  </div>
-
-  <aside id="sidebar" class="sidebar">
-    <div class="sidebar-inner">
-
-      
-
-      
-
-      <section class="site-overview sidebar-panel sidebar-panel-active">
-        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
-          <img class="site-author-image" itemprop="image"
-               src="/uploads/head.jpg"
-               alt="刚毅" />
-          <p class="site-author-name" itemprop="name">刚毅</p>
-           
-              <p class="site-description motion-element" itemprop="description"></p>
-          
-        </div>
-        <nav class="site-state motion-element">
-
-          
-            <div class="site-state-item site-state-posts">
-              <a href="/archives">
-                <span class="site-state-item-count">2</span>
-                <span class="site-state-item-name">日志</span>
-              </a>
-            </div>
-          
-
-          
-
-          
-
-        </nav>
-
-        
-
-        <div class="links-of-author motion-element">
-          
-        </div>
-
-        
-        
-
-        
-        
-
-        
-
-
-      </section>
-
-      
-
-      
-
-    </div>
-  </aside>
-
-
-        
-      </div>
-    </main>
-
-    <footer id="footer" class="footer">
-      <div class="footer-inner">
-        <div class="copyright" >
-  
-  &copy; 
-  <span itemprop="copyrightYear">2017</span>
-  <span class="with-love">
-    <i class="fa fa-heart"></i>
-  </span>
-  <span class="author" itemprop="copyrightHolder">刚毅</span>
-</div>
-
-
-<div class="powered-by">
-  由 <a class="theme-link" href="https://hexo.io">Hexo</a> 强力驱动
-</div>
-
-<div class="theme-info">
-  主题 -
-  <a class="theme-link" href="https://github.com/iissnan/hexo-theme-next">
-    NexT.Pisces
-  </a>
-</div>
-
-
-        
-
-        
-      </div>
-    </footer>
-
-    
-      <div class="back-to-top">
-        <i class="fa fa-arrow-up"></i>
-        
-      </div>
-    
-
-  </div>
-
-  
-
-<script type="text/javascript">
-  if (Object.prototype.toString.call(window.Promise) !== '[object Function]') {
-    window.Promise = null;
-  }
 </script>
 
 
 
+<script>
 
+var b = document.body;
 
+var c = document.getElementsByTagName('canvas')[0];
 
+var a = c.getContext('2d');
 
+document.body.clientWidth;
 
+</script>
 
-  
 
 
+<script>
 
+M=Math;
 
+Q=M.random;J=[];
 
+U=16;
 
-  
-  <script type="text/javascript" src="/lib/jquery/index.js?v=2.1.3"></script>
+T=M.sin;
 
-  
-  <script type="text/javascript" src="/lib/fastclick/lib/fastclick.min.js?v=1.0.6"></script>
+E=M.sqrt;
 
-  
-  <script type="text/javascript" src="/lib/jquery_lazyload/jquery.lazyload.js?v=1.9.7"></script>
+for(O=k=0;x=z=j=i=k<200;)
 
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.min.js?v=1.2.1"></script>
+with(M[k]=k?c.cloneNode(0):c)
 
-  
-  <script type="text/javascript" src="/lib/velocity/velocity.ui.min.js?v=1.2.1"></script>
+{
 
-  
-  <script type="text/javascript" src="/lib/fancybox/source/jquery.fancybox.pack.js?v=2.1.5"></script>
+width=height=k?32:W=446;
 
+with(getContext('2d'))
 
-  
+if(k>10|!k)
 
 
-  <script type="text/javascript" src="/js/src/utils.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/motion.js?v=5.1.0"></script>
+for(
 
+font='60px Impact',
 
+V='rgba(';I=i*U,fillStyle=k?k==13?V+'205,205,215,.15)':
 
-  
-  
+V+(147+I)+','+(k%2?128+I:0)+','+I+',.5)':'#cca',i<7;)
 
 
-  <script type="text/javascript" src="/js/src/affix.js?v=5.1.0"></script>
 
-  <script type="text/javascript" src="/js/src/schemes/pisces.js?v=5.1.0"></script>
+beginPath(fill(arc(U-i/3,24-i/2,k==13?4-(i++)/2:8-i++,0,M.PI*2,1)));
 
 
 
-  
-  
-    <script type="text/javascript" id="motion.page.archive">
-      $('.archive-year').velocity('transition.slideLeftIn');
-    </script>
-  
+else for(;
 
+x=T(i),
 
-  
+y=Q()*2-1,
 
+D=x*x+y*y,
 
-  <script type="text/javascript" src="/js/src/bootstrap.js?v=5.1.0"></script>
+B=E(D-x/.9-1.5*y+1),
 
+R=67*(B+1)*(L=k/9+.8)>>1,
 
+i++<W;
 
-  
+)
 
 
-  
 
+if(D<1)
 
+beginPath(strokeStyle=V+R+','+(R+B*L>>0)+',40,.1)'),
 
+moveTo(U+x*8,U+y*8),
 
-	
+lineTo(U+x*U,U+y*U),
 
+stroke();
 
 
 
+for(
 
-  
+y=H=k+E(k++)*25,
 
+R=Q()*W;
 
+P=3,j<H;)
 
+J[O++]=[
 
+x+=T(R)*P+Q()*6-3,y+=Q()*U-8,
 
-  
+z+=T(R-11)*P+Q()*6-3,
 
+j/H*20+((j+=U)>H&Q()>.8?Q(P=9)*4:0)>>1]
 
+}
 
 
 
-  
+setInterval(function G(m,l)
 
+{
 
+A=T(D-11);
 
+if(l)
 
 
 
-  
+return(
 
+m[2]-l[2])*A+(l[0]-m[0])*T(D);
 
+a.clearRect(0,0,W,W);
 
+J.sort(G);
 
 
-  
 
-  
+for(
 
-  
+i=0;
 
-  
+L=J[i++];
+
+a.drawImage(M[L[3]+1],207+L[0]*A+L[2]*T(D)>>0,L[1]>>1))
+
+{
+
+if(i==2e3)
+
+a.fillText
+
+('Happy Christmas!',U,345);
+
+
+
+if(!(i%7))
+
+a.drawImage(M[13],
+
+((157*(i*i)+T(D*5+i*i)*5)%W)>>0,
+
+((113*i+(D*i)/60)%(290+i/99))>>0);
+
+}
+
+D+=.02
+
+},1)
+
+</script>
 
 </body>
+
 </html>
